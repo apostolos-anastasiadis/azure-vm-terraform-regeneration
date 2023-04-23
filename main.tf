@@ -122,12 +122,6 @@ resource "azurerm_virtual_machine" "vm" {
     admin_password = var.admin_password
   }
   
-   storage_image_reference {
-    publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "16.04-LTS"
-    version   = "latest"
-  }
 
   os_profile_linux_config {
     disable_password_authentication = false
