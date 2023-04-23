@@ -135,13 +135,6 @@ resource "azurerm_virtual_machine" "vm" {
     password = var.admin_password
     host     = azurerm_public_ip.pubip.id 
   }
-  inline = [ 
-    "li -a",
-    "sudo apt-get -y update",
-    "sudo apt-get -y install openjdk-11-jdk",
-    "sudo apt install ca-certificates",
-    "sudo apt-get -y install ansible",
-    ]
     
 }
 
