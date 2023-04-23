@@ -105,18 +105,14 @@ resource "azurerm_virtual_machine" "vm" {
   #delete_os_disk_on_termination    = true
   #delete_data_disks_on_termination = true
 
-  storage_image_reference {
-    publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "16.04-LTS"
-    version   = "latest"
-  }
+ 
 
   storage_os_disk {
     name              = "myosdisk2"
     create_option     = "Attach" 
     managed_disk_id   = "/subscriptions/3d462945-0710-4a95-9a75-a637f18d384a/resourceGroups/project-codehub-reg-apo/providers/Microsoft.Compute/disks/myosdisk2"
     caching           = "ReadWrite"
+    os_type           = "Ubuntu"
     managed_disk_type = "Standard_LRS"
   }
 
