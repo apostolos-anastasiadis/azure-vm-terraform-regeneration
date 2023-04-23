@@ -115,6 +115,7 @@ resource "azurerm_virtual_machine" "vm" {
   storage_os_disk {
     name              = "myosdisk2"
     create_option     = "Attach" 
+    anaged_disk_id   = "/subscriptions/3d462945-0710-4a95-9a75-a637f18d384a/resourceGroups/project-codehub-reg-apo/providers/Microsoft.Compute/disks/myosdisk2
     caching           = "ReadWrite"
     managed_disk_type = "Standard_LRS"
   }
