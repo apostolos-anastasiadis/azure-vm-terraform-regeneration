@@ -112,7 +112,7 @@ resource "azurerm_virtual_machine" "vm" {
     create_option     = "Attach" 
     managed_disk_id   = "/subscriptions/3d462945-0710-4a95-9a75-a637f18d384a/resourceGroups/project-codehub-reg-apo/providers/Microsoft.Compute/disks/myosdisk2"
     caching           = "ReadWrite"
-    os_type           = "Ubuntu"
+    os_type           = "Linux"
     managed_disk_type = "Standard_LRS"
   }
 
@@ -120,6 +120,13 @@ resource "azurerm_virtual_machine" "vm" {
     computer_name  = "hostname"
     admin_username = var.admin_username
     admin_password = var.admin_password
+  }
+  
+   storage_image_reference {
+    publisher = "Canonical"
+    offer     = "UbuntuServer"
+    sku       = "16.04-LTS"
+    version   = "latest"
   }
 
   os_profile_linux_config {
