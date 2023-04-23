@@ -96,7 +96,7 @@ resource "azurerm_network_interface_security_group_association" "nisga" {
 
 # Create virtual machine
 resource "azurerm_virtual_machine" "vm" {
-  name                  = "project-codehub-vm"
+  name                  = "apo-project-codehub-vm"
   location              = azurerm_resource_group.rg.location
   resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.netif.id]
@@ -108,7 +108,7 @@ resource "azurerm_virtual_machine" "vm" {
   storage_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
-    sku       = "16.04-LTS"
+    sku       = "20.04-LTS"
     version   = "latest"
   }
 
@@ -128,7 +128,21 @@ resource "azurerm_virtual_machine" "vm" {
   os_profile_linux_config {
     disable_password_authentication = false
   }
+  
+  connection { 
+    type     = "ssh"
+    user     = var.admin_username
+    password = var.admin_password
+    host     = azurerm_public_ip.pubip.id 
+  }
+  inline = [ 
+    "li -a",
+    "sudo apt-get -y update"
+    "sudo apt-get -y install openjdk-11-jdk",
+    "sudo apt install ca-certificates",
+    "sudo apt-get -y install ansible",
+    ]
+    
 }
-
 
 
