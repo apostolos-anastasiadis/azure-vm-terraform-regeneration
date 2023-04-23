@@ -116,7 +116,6 @@ resource "azurerm_virtual_machine" "vm" {
     name              = "myosdisk2"
     create_option     = "Attach" 
     caching           = "ReadWrite"
-    create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
   }
 
